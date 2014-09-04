@@ -1,1 +1,1 @@
-au BufRead,BufNewFile *.tf filetype=terraform
+au BufRead,BufNewFile *.tf setlocal filetype=terraform

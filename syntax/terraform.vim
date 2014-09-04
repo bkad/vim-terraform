@@ -46,7 +46,7 @@ syn region terraResourceBlock   start=/{/ end=/}/ fold
 """ provider
 syn match  terraProvider      /provider/ nextgroup=terraProviderName skipwhite
 syn region terraProviderName  start=/"/ end=/"/ nextgroup=terraProviderBlock skipwhite
-syn region terraProviderBlock start=/{/ end=/}/ fold contains=@terraConfigItem
+syn region terraProviderBlock start=/{/ end=/}/ fold contains=@terraConfigItem,@terraComment
 
 """ misc.
 syn match terraAssignment    "\<[a-z][a-z0-9_-]*\>" contained skipwhite
