@@ -40,39 +40,25 @@ syn region terraResourceTypeStr start=/"/ end=/"/ contains=terraResourceTypeBI
                               \ nextgroup=terraResourceName skipwhite
 syn region terraResourceName    start=/"/ end=/"/
                               \ nextgroup=terraResourceBlock skipwhite
-syn region terraResourceBlock   start=/{/ end=/}/ fold
-                              \ contains=@terraConfigItem,@terraComment
-
 """ provider
 syn match  terraProvider      /provider/ nextgroup=terraProviderName skipwhite
 syn region terraProviderName  start=/"/ end=/"/ nextgroup=terraProviderBlock skipwhite
-syn region terraProviderBlock start=/{/ end=/}/ fold contains=@terraConfigItem,@terraComment
 
 """ misc.
-syn match terraAssignment    "\<[a-z][a-z0-9_-]*\>" contained skipwhite
-                             \ nextgroup=terraAssignmentOp
-syn match terraAssignmentOp  "=" nextgroup=@terraValue skipwhite
 syn match terraValueDec      "\<[0-9]\+\([kKmMgG]b\?\)\?\>"
 syn match terraValueHexaDec  "\<0x[0-9a-f]\+\([kKmMgG]b\?\)\?\>"
+syn match	terraBraces	       "[{}\[\]]"
 
 syn region terraValueString  start=/"/    end=/"/    contains=terraStringInterp
 syn region terraStringInterp matchgroup=terraBrackets start=/\${/  end=/}/ contained
 
-syn cluster terraConfigItem contains=terraAssignment
-syn cluster terraBlock      contains=terraProviderBlock,terraResourceBlock
-syn cluster terraValue      contains=terraValueBool,terraValueDec,
-                                    \terraValueHexaDec,terraValueString
-
 hi def link terraComment           Comment
 hi def link terraTodo              Todo
-hi def link terraAssignment        Identifier
-hi def link terraAssignmentOp      Operator
 hi def link terraBrackets          Operator
 hi def link terraProvider          Structure
-hi def link terraProviderBlock     Delimiter
+hi def link terraBraces            Delimiter
 hi def link terraProviderName      String
 hi def link terraResource          Structure
-hi def link terraResourceBlock     Delimiter
 hi def link terraResourceName      String
 hi def link terraResourceTypeBI    Tag
 hi def link terraResourceTypeStr   String
