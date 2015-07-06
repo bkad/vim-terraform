@@ -1,7 +1,7 @@
 providers := $(wildcard $(GOPATH)/src/github.com/hashicorp/terraform/builtin/providers/*/provider.go)
 resource_list := tmp/resources.txt
 syntax := syntax/terraform.vim
-template_warning := \# GENERATED FROM MAKEFILE, DO NOT EDIT
+template_warning := \" GENERATED FROM MAKEFILE, DO NOT EDIT
 
 default: $(syntax)
 

@@ -1,4 +1,4 @@
-# GENERATED FROM MAKEFILE, DO NOT EDIT
+" GENERATED FROM MAKEFILE, DO NOT EDIT
 " Forked from Larry Gilbert's syntax file
 " github.com/L2G/vim-syntax-terraform
 
