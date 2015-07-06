@@ -1,9 +1,12 @@
 providers := $(wildcard $(GOPATH)/src/github.com/hashicorp/terraform/builtin/providers/*/provider.go)
 resource_list := tmp/resources.txt
+syntax := syntax/terraform.vim
+template_warning := \# GENERATED FROM MAKEFILE, DO NOT EDIT
 
-default: $(resource_list)
+default: $(syntax)
 
 clean:
+	rm $(syntax)
 	rm -rf tmp/
 
 $(resource_list): tmp/
@@ -12,6 +15,10 @@ $(resource_list): tmp/
 		resource=`grep -E ":\s+resource" "$$file" | cut -f 2 -d '"'`; \
 		echo "$$resource" >> $(resource_list); \
 	done
+
+$(syntax): $(resource_list)
+	echo "$(template_warning)" > $(syntax)
+	cat templates/$(syntax) >> $(syntax)
 
 tmp/:
 	mkdir -p tmp/
