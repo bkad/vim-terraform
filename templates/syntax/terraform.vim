@@ -12,22 +12,7 @@ syn keyword terraValueBool true false on off yes no
 
 """ resource
 
-syn keyword terraResourceTypeBI
-          \ aws_autoscaling_group           aws_security_group
-          \ aws_db_instance                 aws_subnet
-          \ aws_db_security_group           aws_vpc
-          \ aws_eip                         cloudflare_record
-          \ aws_elb                         consul_keys
-          \ aws_instance                    digitalocean_domain
-          \ aws_internet_gateway            digitalocean_droplet
-          \ aws_launch_configuration        digitalocean_record
-          \ aws_route53_record              dnsimple_record
-          \ aws_route53_zone                heroku_addon
-          \ aws_route_table                 heroku_app
-          \ aws_route_table_association     heroku_domain
-          \ aws_s3_bucket                   heroku_drain
-          \
-          \ contained
+syn keyword terraResourceTypeBI RESOURCES
 
 syn keyword terraTodo         contained TODO FIXME XXX BUG
 syn cluster terraCommentGroup contains=terraTodo

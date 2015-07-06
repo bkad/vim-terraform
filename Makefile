@@ -10,7 +10,7 @@ clean:
 	rm -rf tmp/
 
 $(resource_list): tmp/
-	echo -n > $(resource_list)
+	rm -f $(resource_list)
 	for file in $(providers); do \
 		resource=`grep -E ":\s+resource" "$$file" | cut -f 2 -d '"'`; \
 		echo "$$resource" >> $(resource_list); \
@@ -18,7 +18,7 @@ $(resource_list): tmp/
 
 $(syntax): $(resource_list)
 	echo "$(template_warning)" > $(syntax)
-	cat templates/$(syntax) >> $(syntax)
+	cat templates/$(syntax) | sed -e 's/RESOURCES/$(shell cat ${resource_list})/' >> $(syntax)
 
 tmp/:
 	mkdir -p tmp/
