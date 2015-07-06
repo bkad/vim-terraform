@@ -12,7 +12,6 @@ syn keyword terraValueBool true false on off yes no
 
 """ resource
 
-" find . -name "resource_*.go" -not -name "resource_*_test.go" -not -name "resource_provider.go" | sed 's/.*\/resource_//; s/\.go$//'
 syn keyword terraResourceTypeBI
           \ aws_autoscaling_group           aws_security_group
           \ aws_db_instance                 aws_subnet
