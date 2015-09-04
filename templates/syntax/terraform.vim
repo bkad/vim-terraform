@@ -35,6 +35,7 @@ syn match	terraBraces	       "[{}\[\]]"
 
 syn region terraValueString  start=/"/    end=/"/    contains=terraStringInterp
 syn region terraStringInterp matchgroup=terraBrackets start=/\${/  end=/}/ contained
+                           \ contains=terraStringInterp
 
 hi def link terraComment           Comment
 hi def link terraTodo              Todo
