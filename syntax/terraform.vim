@@ -34,7 +34,7 @@ syn match terraValueDec      "\<[0-9]\+\([kKmMgG]b\?\)\?\>"
 syn match terraValueHexaDec  "\<0x[0-9a-f]\+\([kKmMgG]b\?\)\?\>"
 syn match	terraBraces	       "[{}\[\]]"
 
-syn region terraValueString  start=/"/    end=/"/    contains=terraStringInterp
+syn region terraValueString  start=/\\\@<!"/    end=/\\\@<!"/    contains=terraStringInterp
 syn region terraStringInterp matchgroup=terraBrackets start=/\${/  end=/}/ contained
                            \ contains=terraStringInterp
 
