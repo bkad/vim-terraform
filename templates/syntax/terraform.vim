@@ -13,6 +13,7 @@ syn keyword terraValueBool true false on off yes no
 """ resource
 
 syn keyword terraResourceTypeBI RESOURCES
+syn keyword terraDataSourceTypeBI DATA_SOURCES
 
 syn keyword terraTodo         contained TODO FIXME XXX BUG
 syn cluster terraCommentGroup contains=terraTodo
@@ -24,6 +25,12 @@ syn region terraResourceTypeStr start=/"/ end=/"/ contains=terraResourceTypeBI
                               \ nextgroup=terraResourceName skipwhite
 syn region terraResourceName    start=/"/ end=/"/
                               \ nextgroup=terraResourceBlock skipwhite
+
+syn match  terraDataSource        /\<data\>/ nextgroup=terraDataSourceTypeStr skipwhite
+syn region terraDataSourceTypeStr start=/"/ end=/"/ contains=terraDataSourceTypeBI
+                                  \ nextgroup=terraDataSourceName skipwhite
+syn region terraDataSourceName    start=/"/ end=/"/
+                                  \ nextgroup=terraDataSourceBlock skipwhite
 """ provider
 syn match  terraProvider      /\<provider\>/ nextgroup=terraProviderName skipwhite
 syn region terraProviderName  start=/"/ end=/"/ nextgroup=terraProviderBlock skipwhite
@@ -47,6 +54,10 @@ hi def link terraResource          Structure
 hi def link terraResourceName      String
 hi def link terraResourceTypeBI    Tag
 hi def link terraResourceTypeStr   String
+hi def link terraDataSource        Structure
+hi def link terraDataSourceName    String
+hi def link terraDataSourceTypeBI  Tag
+hi def link terraDataSourceTypeStr String
 hi def link terraSection           Structure
 hi def link terraStringInterp      Identifier
 hi def link terraValueBool         Boolean
