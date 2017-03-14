@@ -1,3 +1,4 @@
+GOPATH ?= ~/go
 providers := $(wildcard $(GOPATH)/src/github.com/hashicorp/terraform/builtin/providers/*/provider.go)
 resource_list := tmp/resources.txt
 data_source_list := tmp/data_sources.txt
